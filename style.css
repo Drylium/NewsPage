@@ -161,3 +161,26 @@ body {
 .news-card:hover h2 {
     color: #d10000;
 }
+
+.latest-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.latest-item:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    padding-left: 5px;
+}
+
+.latest-item p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.latest-item:hover strong {
+    color: #b00000;
+}
