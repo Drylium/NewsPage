@@ -4,7 +4,6 @@ body {
     background: #f5f5f5;
 }
 
-/* Navbar */
 .navbar {
     background: #000;
     color: white;
@@ -30,7 +29,6 @@ body {
     text-decoration: underline;
 }
 
-/* Main content */
 .content {
     width: 90%;
     max-width: 1300px;
@@ -38,21 +36,18 @@ body {
     padding-top: 20px;
 }
 
-/* Two-column layout */
 .two-column {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
 }
 
-/* Left column */
 .left-column {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-/* Main featured article */
 .main-feature {
     background: white;
     padding: 25px;
@@ -70,30 +65,30 @@ body {
     color: #333;
 }
 
-/* Article grid */
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 25px;
+.section-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #000;
+    padding-bottom: 5px;
 }
 
 .news-card {
     background: white;
     padding: 20px;
     border-radius: 6px;
+    margin-bottom: 15px;
     box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
-.news-card h2 {
+.news-card h3 {
     margin-top: 0;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .news-card p {
     color: #444;
 }
 
-/* Right column: Senaste nytt */
 .right-column {
     background: white;
     padding: 20px;
@@ -128,7 +123,6 @@ body {
     margin-right: 6px;
 }
 
-/* Footer */
 .footer {
     background: #000;
     color: white;
@@ -145,4 +139,25 @@ body {
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+.news-card {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    background: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.news-card:hover h3,
+.news-card:hover h2 {
+    color: #d10000;
 }
