@@ -1,3 +1,17 @@
+function sanitizeInput(str) {
+    return str
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function truncateText(text, maxLength) {
+    return text.length > maxLength 
+        ? text.substring(0, maxLength) + "..." 
+        : text;
+}
+
 const form = document.getElementById("articleForm");
 const titleInput = document.getElementById("titleInput");
 const textInput = document.getElementById("textInput");
@@ -14,9 +28,9 @@ form.addEventListener("submit", (e) => {
 
     const newArticle = {
     id: Date.now(),
-    title: titleInput.value,
-    text: textInput.value,
-    date: new Date().toLocaleString("sv-SE") 
+    title: sanitizeInput(titleInput.value),
+    text: sanitizeInput(textInput.value),
+    date: new Date().toLocaleString("sv-SE")
 };
 
     articles.push(newArticle);
@@ -31,12 +45,6 @@ function saveArticles() {
     localStorage.setItem("articles", JSON.stringify(articles));
 }
 
-function truncateText(text, maxLength) {
-    return text.length > maxLength 
-        ? text.substring(0, maxLength) + "..." 
-        : text;
-}
-
 function renderArticles() {
     const dynamicArticles = document.querySelectorAll(".dynamic-article");
     dynamicArticles.forEach(a => a.remove());
@@ -47,12 +55,30 @@ function renderArticles() {
         const card = document.createElement("article");
         card.classList.add("news-card", "dynamic-article");
 
-        card.innerHTML = `
-    <h3>${article.title}</h3>
-    <p>${truncateText(article.text, 60)}</p>
-    <small><em>${article.date}</em></small>
-    <button class="delete-btn" data-id="${article.id}">Radera</button>
-`;
+        // Titel
+        const titleEl = document.createElement("h3");
+        titleEl.textContent = article.title;
+
+        // Text (trunkeras)
+        const textEl = document.createElement("p");
+        textEl.textContent = truncateText(article.text, 60);
+
+        // Datum
+        const dateEl = document.createElement("small");
+        dateEl.innerHTML = `<em>${article.date}</em>`; 
+        // <em> är okej här eftersom vi kontrollerar innehållet själva
+
+        // Radera-knapp
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.textContent = "Radera";
+        deleteBtn.dataset.id = article.id;
+
+        // Lägg till i kortet
+        card.appendChild(titleEl);
+        card.appendChild(textEl);
+        card.appendChild(dateEl);
+        card.appendChild(deleteBtn);
 
         targetSection.appendChild(card);
     });
