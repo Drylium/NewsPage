@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Nyhetssida</title>
-    <!-- Länkar till extern CSS-fil som styr sidans utseende -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Huvudmeny med länkar till olika nyhetskategorier -->
     <header class="navbar">
         <div class="logo">Groots Nyheter</div>
         <nav class="nav-links">
@@ -20,19 +18,16 @@
         </nav>
     </header>
 
-    <!-- Huvudinnehåll, tvåkolumnslayout (vänster: artiklar, höger: senaste nytt) -->
     <main class="content two-column">
 
-        <!-- Vänstra kolumnen med huvudartikel och sektioner -->
         <section class="left-column">
 
-            <!-- Huvudnyhet högst upp -->
             <section class="main-feature">
                 <h1>Teleportationstest lyckades – forskare jublar</h1>
                 <p>Det första lyckade teleportationstestet på ett föremål har genomförts i Schweiz. Forskare beskriver det som ett historiskt genombrott som kan förändra framtidens transporter.</p>
             </section>
 
-            <!-- Lokala nyheter -->
+            <!-- Lokalt -->
             <section class="news-section">
                 <h2 class="section-title">Lokalt</h2>
 
@@ -47,7 +42,7 @@
                 </article>
             </section>
 
-            <!-- Utrikesnyheter -->
+            <!-- Utrikes -->
             <section class="news-section">
                 <h2 class="section-title">Utrikes</h2>
 
@@ -62,7 +57,7 @@
                 </article>
             </section>
 
-            <!-- Sportnyheter -->
+            <!-- Sport -->
             <section class="news-section">
                 <h2 class="section-title">Sport</h2>
 
@@ -77,7 +72,7 @@
                 </article>
             </section>
 
-            <!-- Kulturnyheter -->
+            <!-- Kultur -->
             <section class="news-section">
                 <h2 class="section-title">Kultur</h2>
 
@@ -92,9 +87,18 @@
                 </article>
             </section>
 
+            <!-- Skapa Artiklar -->
+            <section class="create-article">
+                <h2>Skapa ny artikel</h2>
+                <form id="articleForm">
+                    <input type="text" id="titleInput" placeholder="Titel" required>
+                    <textarea id="textInput" placeholder="Artikeltext" required></textarea>
+                    <button type="submit">Skapa artikel</button>
+                </form>
+            </section>
+
         </section>
 
-        <!-- Högra kolumnen, lista med senaste nytt -->
         <aside class="right-column">
             <h3>Senaste nytt</h3>
 
@@ -121,7 +125,6 @@
 
     </main>
 
-    <!-- Sidfot med länkar till sociala medier -->
     <footer class="footer">
         <p>Följ oss</p>
         <a href="#">Facebook</a>
@@ -130,5 +133,8 @@
         <a href="#">YouTube</a>
     </footer>
 
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
