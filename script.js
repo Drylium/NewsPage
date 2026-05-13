@@ -1,3 +1,4 @@
+//Sanerings säkerhet av användarens input
 function sanitizeInput(str) {
     return str
         .replace(/</g, "&lt;")
@@ -6,6 +7,7 @@ function sanitizeInput(str) {
         .replace(/'/g, "&#39;");
 }
 
+//Visar endast 60 tecken, men skrivs de mer så sparas de fortfarande till local storage
 function truncateText(text, maxLength) {
     return text.length > maxLength 
         ? text.substring(0, maxLength) + "..." 
@@ -59,14 +61,13 @@ function renderArticles() {
         const titleEl = document.createElement("h3");
         titleEl.textContent = article.title;
 
-        // Text (trunkeras)
+        // Text trunkeras
         const textEl = document.createElement("p");
         textEl.textContent = truncateText(article.text, 60);
 
         // Datum
         const dateEl = document.createElement("small");
         dateEl.innerHTML = `<em>${article.date}</em>`; 
-        // <em> är okej här eftersom vi kontrollerar innehållet själva
 
         // Radera-knapp
         const deleteBtn = document.createElement("button");
